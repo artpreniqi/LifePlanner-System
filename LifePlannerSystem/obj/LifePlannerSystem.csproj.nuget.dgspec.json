@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlannerSystem.csproj": {}
+    "C:\\Users\\Bambus\\LifePlanner-System\\LifePlannerSystem\\LifePlannerSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlannerSystem.csproj": {
+    "C:\\Users\\Bambus\\LifePlanner-System\\LifePlannerSystem\\LifePlannerSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlannerSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Bambus\\LifePlanner-System\\LifePlannerSystem\\LifePlannerSystem.csproj",
         "projectName": "LifePlannerSystem",
-        "projectPath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlannerSystem.csproj",
-        "packagesPath": "C:\\Users\\ArtPr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\obj\\",
+        "projectPath": "C:\\Users\\Bambus\\LifePlanner-System\\LifePlannerSystem\\LifePlannerSystem.csproj",
+        "packagesPath": "C:\\Users\\Bambus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bambus\\LifePlanner-System\\LifePlannerSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ArtPr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Bambus\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
