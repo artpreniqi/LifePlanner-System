@@ -95,3 +95,4 @@ C:\Users\ArtPr\OneDrive\Documents\UBT\Shkenca Kompjuterike dhe Inxhinieri\Semest
 C:\Users\ArtPr\OneDrive\Documents\UBT\Shkenca Kompjuterike dhe Inxhinieri\Semestri V\Programimi në anën e ServeritUeb Programimi\LifePlanner System\LifePlannerSystem\obj\Debug\net10.0\LifePlannerSystem.pdb
 C:\Users\ArtPr\OneDrive\Documents\UBT\Shkenca Kompjuterike dhe Inxhinieri\Semestri V\Programimi në anën e ServeritUeb Programimi\LifePlanner System\LifePlannerSystem\obj\Debug\net10.0\LifePlannerSystem.genruntimeconfig.cache
 C:\Users\ArtPr\OneDrive\Documents\UBT\Shkenca Kompjuterike dhe Inxhinieri\Semestri V\Programimi në anën e ServeritUeb Programimi\LifePlanner System\LifePlannerSystem\obj\Debug\net10.0\ref\LifePlannerSystem.dll
+C:\Users\ArtPr\OneDrive\Documents\UBT\Shkenca Kompjuterike dhe Inxhinieri\Semestri V\Programimi në anën e ServeritUeb Programimi\LifePlanner System\LifePlannerSystem\obj\Debug\net10.0\LifePlannerSystem.sourcelink.json
