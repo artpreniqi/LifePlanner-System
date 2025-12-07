@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("LifePlannerSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7caf67e272c401898abf4e354d2411699d964f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d7f2b00ffc4734c319ef3e891ddbe915f5d8049")]
 [assembly: System.Reflection.AssemblyProductAttribute("LifePlannerSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LifePlannerSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
