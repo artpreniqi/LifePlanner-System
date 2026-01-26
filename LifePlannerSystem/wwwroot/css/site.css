@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f4f6f9; 
+    color: #333;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; 
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hover-link:hover {
+    color: #0d6efd !important;
+    text-decoration: underline !important;
+}
+
+/* HOVER EFFECTS FOR NAVBAR (LIGHT MODE) */
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+/* 2. Hover on Light Mode */
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: #11998e !important; 
+}
+
+body.dark-mode .navbar-brand:hover,
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #38ef7d !important; 
+}
+
+/* DARK MODE STYLES */
+
+body.dark-mode {
+    background-color: #121212 !important; 
+    color: #e0e0e0 !important; 
+}
+
+body.dark-mode .card, 
+body.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .text-dark {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .text-muted, 
+body.dark-mode .text-secondary {
+    color: #a0a0a0 !important; 
+}
+
+/* Navbar and Dropdowns */
+body.dark-mode .navbar, 
+body.dark-mode .bg-light {
+    background-color: #1e1e1e !important; 
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+}
+body.dark-mode .dropdown-item {
+    color: #e0e0e0;
+}
+body.dark-mode .dropdown-item:hover {
+    background-color: #3d3d3d;
+}
+
+/* Inputs (Register/Login) */
+body.dark-mode .form-control {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #fff;
+}
+body.dark-mode .form-control:focus {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .nav-link {
+    color: #e0e0e0 !important;
+}
+
+/* Footer */
+body.dark-mode footer {
+    background-color: #1e1e1e !important;
+    border-top: 1px solid #333 !important;
+    color: #a0a0a0 !important;
+}
+
+/* Main Title (LifePlanner) in Navbar become white */
+body.dark-mode .navbar-brand {
+    color: #ffffff !important;
+}
+
+body.dark-mode .navbar-nav .nav-link {
+    color: #e0e0e0 !important; 
+}
+
+body.dark-mode .navbar-nav .nav-link:hover,
+body.dark-mode .navbar-brand:hover {
+    color: #38ef7d !important; 
+}
+
+/* Privacy Policy text readable */
+body.dark-mode .list-group-item {
+    background-color: transparent !important; 
+    color: #e0e0e0 !important; 
+    border-color: #444 !important; 
+}
+
+/* Admin Panel Dark Mode fix */
+body.dark-mode .navbar-nav .nav-link.text-danger {
+    color: #dc3545 !important; 
+}
+
+body.dark-mode .navbar-nav .nav-link.text-danger:hover {
+    color: #ff6b6b !important; 
+    text-shadow: 0 0 10px rgba(220, 53, 69, 0.5); 
+}

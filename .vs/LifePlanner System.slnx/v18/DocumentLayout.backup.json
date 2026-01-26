@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\Home\\Index.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Views\\Home\\Index.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\HomeController.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Controllers\\HomeController.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Details.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Views\\ToDo\\Details.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ToDoItem.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Models\\ToDoItem.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Index.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Views\\ToDo\\Index.cshtml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ApplicationUser.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Models\\ApplicationUser.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\NotesController.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LifePlannerSystem\\Controllers\\NotesController.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "LifePlannerSystem\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABEBAAAAAAAAAAAAACYBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T17:17:35.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "LifePlannerSystem\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T17:13:45.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ToDoItem.cs",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ToDoItem.cs",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Models\\ToDoItem.cs",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ToDoItem.cs",
+              "RelativeToolTip": "LifePlannerSystem\\Models\\ToDoItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T23:17:52.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Details.cshtml",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Views\\ToDo\\Details.cshtml",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Details.cshtml",
+              "RelativeToolTip": "LifePlannerSystem\\Views\\ToDo\\Details.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-25T23:11:34.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Index.cshtml",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Views\\ToDo\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Views\\ToDo\\Index.cshtml",
+              "RelativeToolTip": "LifePlannerSystem\\Views\\ToDo\\Index.cshtml",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKsAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-25T23:10:19.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "LifePlannerSystem\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAwE8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T23:07:18.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "LifePlannerSystem\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T23:07:10.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NotesController.cs",
+              "DocumentMoniker": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\NotesController.cs",
+              "RelativeDocumentMoniker": "LifePlannerSystem\\Controllers\\NotesController.cs",
+              "ToolTip": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi n\u00EB an\u00EBn e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\Controllers\\NotesController.cs",
+              "RelativeToolTip": "LifePlannerSystem\\Controllers\\NotesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T22:57:49.072Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

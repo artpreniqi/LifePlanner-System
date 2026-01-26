@@ -1,0 +1,85 @@
+@using Microsoft.AspNetCore.Identity
+@using LifePlanner.Models
+@using LifePlanner.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext _context
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+
+    // Notifications logic
+    var tomorrow = DateTime.Now.AddHours(24);
+    var urgentTasksQuery = _context.ToDoItems
+        .Where(t => t.OwnerId == userId 
+                 && !t.IsCompleted 
+                 && t.DueDate < tomorrow)
+        .OrderBy(t => t.DueDate);
+
+    var totalUrgent = urgentTasksQuery.Count();
+    var topNotifications = urgentTasksQuery.Take(5).ToList();
+
+    <ul class="navbar-nav flex-row align-items-center">
+        
+        <li class="nav-item dropdown me-3">
+            <a class="nav-link text-dark position-relative p-0" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell-fill fs-4"></i> @if (totalUrgent > 0)
+                {
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem; margin-left: -5px; margin-top: 5px;">
+                        @totalUrgent
+                        <span class="visually-hidden">unread</span>
+                    </span>
+                }
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 position-absolute" aria-labelledby="notificationDropdown" style="width: 300px; right: 0; left: auto;">
+                <li><h6 class="dropdown-header fw-bold text-uppercase text-muted">Notifications</h6></li>
+                @if (totalUrgent == 0)
+                {
+                    <li class="p-3 text-center text-muted small">No urgent tasks.</li>
+                }
+                else
+                {
+                    @foreach (var item in topNotifications)
+                    {
+                        var timeRemaining = item.DueDate - DateTime.Now;
+                        string icon = timeRemaining.TotalMinutes < 0 ? "bi-exclamation-triangle-fill text-danger" : "bi-clock text-warning";
+                        string msg = timeRemaining.TotalMinutes < 0 ? "Overdue" : "Due soon";
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-start py-2" asp-controller="ToDo" asp-action="Details" asp-route-id="@item.Id">
+                                <i class="bi @icon fs-5 me-2"></i>
+                                <div>
+                                    <strong class="d-block text-truncate" style="max-width: 180px;">@item.Title</strong>
+                                    <small class="text-muted">@msg</small>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-center small text-primary" asp-controller="ToDo" asp-action="Index">View All</a></li>
+                }
+            </ul>
+        </li>
+
+        <li class="nav-item me-2">
+            <button id="darkModeToggle" class="btn btn-link nav-link text-dark p-0 border-0">
+                <i id="themeIcon" class="bi bi-moon-stars-fill fs-4"></i>
+            </button>
+        </li>
+
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav flex-row">
+         <li class="nav-item me-2">
+            <button id="darkModeToggle" class="btn btn-link nav-link text-dark p-0 border-0">
+                <i id="themeIcon" class="bi bi-moon-stars-fill fs-4"></i>
+            </button>
+        </li>
+    </ul>
+}

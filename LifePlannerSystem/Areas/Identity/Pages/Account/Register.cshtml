@@ -1,0 +1,90 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .register-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .btn-success-custom {
+        background-color: #1cc88a;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    .btn-success-custom:hover { background-color: #17a673; }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card register-card p-4">
+                <div class="text-center mb-4">
+                    <h2 class="text-success fw-bold">Create Account</h2>
+                    <p class="text-muted">Join LifePlanner today</p>
+                </div>
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-floating mb-3">
+                         <input asp-for="Input.FullName" class="form-control" placeholder="John Doe" />
+                         <label asp-for="Input.FullName">Full Name</label>
+                         <span asp-validation-for="Input.FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                         <input asp-for="Input.Username" class="form-control" placeholder="Username" />
+                         <label asp-for="Input.Username">Username</label>
+                         <span asp-validation-for="Input.Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                         <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                         <label asp-for="Input.Email">Email Address</label>
+                         <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input asp-for="Input.Password" class="form-control" id="regPass" autocomplete="new-password" placeholder="Password" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+                            <label asp-for="Input.Password">Password</label>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassGlobal('regPass', 'regIcon')" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <i class="bi bi-eye" id="regIcon"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger d-block mb-3"></span>
+
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input asp-for="Input.ConfirmPassword" class="form-control" id="confPass" autocomplete="new-password" placeholder="Confirm Password" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+                            <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassGlobal('confPass', 'confIcon')" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <i class="bi bi-eye" id="confIcon"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger d-block mb-3"></span>
+
+                    <div class="d-grid gap-2">
+                        <button id="registerSubmit" type="submit" class="btn btn-success btn-success-custom text-white">Sign Up</button>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a asp-page="./Login" class="text-decoration-none">Already have an account? Log in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

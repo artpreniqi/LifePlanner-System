@@ -1,0 +1,33 @@
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="list-group shadow-sm">
+    <a class="list-group-item list-group-item-action @ManageNavPages.IndexNavClass(ViewContext) p-3" id="profile" asp-page="./Index">
+        <i class="bi bi-person-circle me-2 text-primary"></i> Profile
+    </a>
+    
+    <a class="list-group-item list-group-item-action @ManageNavPages.EmailNavClass(ViewContext) p-3" id="email" asp-page="./Email">
+        <i class="bi bi-envelope me-2 text-success"></i> Email
+    </a>
+    
+    <a class="list-group-item list-group-item-action @ManageNavPages.ChangePasswordNavClass(ViewContext) p-3" id="change-password" asp-page="./ChangePassword">
+        <i class="bi bi-key me-2 text-warning"></i> Password
+    </a>
+
+    @if (hasExternalLogins)
+    {
+        <a class="list-group-item list-group-item-action @ManageNavPages.ExternalLoginsNavClass(ViewContext) p-3" id="external-login" asp-page="./ExternalLogins">
+            <i class="bi bi-google me-2"></i> External Logins
+        </a>
+    }
+    
+    <a class="list-group-item list-group-item-action @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) p-3" id="two-factor" asp-page="./TwoFactorAuthentication">
+        <i class="bi bi-shield-lock me-2 text-danger"></i> Two-factor authentication
+    </a>
+    
+    <a class="list-group-item list-group-item-action @ManageNavPages.PersonalDataNavClass(ViewContext) p-3" id="personal-data" asp-page="./PersonalData">
+        <i class="bi bi-archive me-2 text-info"></i> Personal data
+    </a>
+</div>

@@ -1,0 +1,75 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+<style>
+    body { background-color: #f8f9fa; }
+    .login-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .btn-primary-custom {
+        background-color: #4e73df;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    .btn-primary-custom:hover { background-color: #2e59d9; }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card login-card p-4">
+                <div class="text-center mb-4">
+                    <h2 class="text-primary fw-bold">Welcome Back</h2>
+                    <p class="text-muted">Please enter your credentials</p>
+                </div>
+
+                <form id="account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="name@example.com" />
+                        <label asp-for="Input.Email">Email Address</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input asp-for="Input.Password" class="form-control" id="loginPass" autocomplete="current-password" placeholder="Password" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+                            <label asp-for="Input.Password">Password</label>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassGlobal('loginPass', 'loginIcon')" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <i class="bi bi-eye" id="loginIcon"></i>
+                        </button>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger d-block mb-3"></span>
+
+                    <div class="d-grid gap-2">
+                        <button id="login-submit" type="submit" class="btn btn-primary btn-primary-custom text-white">Log In</button>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword" class="text-decoration-none">Forgot your password?</a>
+                        </p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none">Create a new account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
