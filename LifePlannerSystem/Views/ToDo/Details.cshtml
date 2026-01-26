@@ -1,0 +1,99 @@
+@model LifePlanner.Models.ToDoItem
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <div class="card shadow-lg border-0 rounded-3">
+                
+                @{
+                    string headerClass = "bg-success"; // Low
+                    if (Model.Priority == "High") headerClass = "bg-danger";
+                    else if (Model.Priority == "Medium") headerClass = "bg-warning";
+                }
+
+                <div class="card-header @headerClass text-white p-4 rounded-top-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0 fw-bold"><i class="bi bi-card-checklist me-2"></i>Task Details</h3>
+                        <span class="badge bg-white text-dark border px-3 py-2 rounded-pill">
+                            @Model.Priority Priority
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-body p-5 bg-white">
+                    
+                    <div class="mb-4">
+                        <h5 class="text-muted text-uppercase small fw-bold">Title</h5>
+                        <h2 class="text-dark fw-bold">@Model.Title</h2>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="text-muted text-uppercase small fw-bold">Description</h5>
+                        <p class="fs-5 text-secondary">
+                            @(string.IsNullOrEmpty(Model.Description) ? "No description provided." : Model.Description)
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="text-muted text-uppercase small fw-bold">Due Date</h5>
+                            <div class="d-flex align-items-center text-dark fs-5">
+                                <i class="bi bi-clock me-2 text-primary"></i>
+                                @Model.DueDate.ToString("dd MMM yyyy, HH:mm")
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <h5 class="text-muted text-uppercase small fw-bold">Status</h5>
+                            <div class="d-flex align-items-center text-dark fs-5">
+                                @if (Model.IsCompleted)
+                                {
+                                    <span class="text-success"><i class="bi bi-check-circle-fill me-2"></i>Completed</span>
+                                }
+                                else
+                                {
+                                    <span class="text-warning"><i class="bi bi-hourglass-split me-2"></i>Pending</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <hr />
+                        <div class="alert alert-info d-flex align-items-center">
+                            <i class="bi bi-person-badge-fill fs-4 me-3"></i>
+                            <div>
+                                <strong>Owner:</strong> @(Model.Owner?.UserName ?? "Unknown") <br />
+                                <small>Email: @(Model.Owner?.Email ?? "N/A")</small>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="card-footer bg-light p-4 rounded-bottom-3 d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-arrow-left me-2"></i>Back to List
+                    </a>
+                    
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-lg text-dark fw-bold me-2">
+                            <i class="bi bi-pencil me-2"></i>Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-lg">
+                            <i class="bi bi-trash me-2"></i>Delete
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

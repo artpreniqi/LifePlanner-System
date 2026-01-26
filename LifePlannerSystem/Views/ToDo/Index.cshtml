@@ -1,0 +1,216 @@
+@using LifePlanner.Models
+@* 1. Pagination *@
+@model PaginatedList<LifePlanner.Models.ToDoItem>
+
+@{
+    ViewData["Title"] = "My Tasks";
+    
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-dark">My Tasks</h2>
+        <p class="text-muted">Manage your daily goals and stay productive.</p>
+    </div>
+    <div>
+        <a asp-action="History" class="btn btn-outline-secondary btn-lg me-2 shadow-sm">
+            <i class="bi bi-archive me-2"></i>History
+        </a>
+        
+        <a asp-action="Create" class="btn btn-primary btn-lg shadow-sm">
+            <i class="bi bi-plus-lg me-2"></i>New Task
+        </a>
+    </div>
+</div>
+
+@*  *@
+<div class="card p-3 mb-4 bg-light border-0 shadow-sm">
+    <form asp-action="Index" method="get" class="row g-3 align-items-center">
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control border-start-0" placeholder="Search tasks..." />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <select name="filterPriority" class="form-select">
+                <option value="">All Priorities</option>
+                <!option value="High" selected="@((string)ViewData["CurrentPriority"] == "High")">High</!option>
+                <!option value="Medium" selected="@((string)ViewData["CurrentPriority"] == "Medium")">Medium</!option>
+                <!option value="Low" selected="@((string)ViewData["CurrentPriority"] == "Low")">Low</!option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <div class="form-check pt-2">
+                <input class="form-check-input" type="checkbox" name="showCompleted" value="true" id="chkCompleted" @(ViewData["ShowCompleted"] is bool show && show ? "checked" : "")>
+                <label class="form-check-label" for="chkCompleted">Show Completed</label>
+            </div>
+        </div>
+        <div class="col-md-2 text-end">
+            <button type="submit" class="btn btn-primary rounded-pill px-3">Filter</button>
+            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-3">Reset</a>
+        </div>
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <div class="mb-3">
+            <i class="bi bi-clipboard-check display-1 text-muted opacity-25"></i>
+        </div>
+        <h4 class="text-muted">No tasks found!</h4>
+        <p class="text-secondary">Try adjusting your filters or add a new task.</p>
+        <a asp-action="Create" class="btn btn-outline-primary mt-2">Create New Task</a>
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            var timeRemaining = item.DueDate - DateTime.Now;
+            
+            string borderClass = "border-success"; 
+            string textClass = "text-success";
+            string icon = "bi-check-circle";
+            string reminderMessage = "";
+
+            if (item.IsCompleted)
+            {
+                 borderClass = "border-secondary";
+                 textClass = "text-muted";
+                 icon = "bi-check-all";
+            }
+            else if (timeRemaining.TotalMinutes < 0)
+            {
+                borderClass = "border-danger"; 
+                reminderMessage = "⚠️ Overdue by " + Math.Abs(timeRemaining.Days) + " days!";
+            }
+            else if (timeRemaining.TotalHours < 24)
+            {
+                borderClass = "border-warning"; 
+                reminderMessage = "⏰ Due in " + timeRemaining.Hours + " hours!";
+            }
+            else 
+            {
+                if (item.Priority == "High")
+                {
+                    borderClass = "border-danger";
+                    textClass = "text-danger";
+                    icon = "bi-exclamation-circle";
+                }
+                else if (item.Priority == "Medium")
+                {
+                    borderClass = "border-warning";
+                    textClass = "text-warning";
+                    icon = "bi-cone-striped";
+                }
+            }
+
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body position-relative border-start border-5 @borderClass rounded-3">
+                        
+                        @if (!string.IsNullOrEmpty(reminderMessage) && !item.IsCompleted)
+                        {
+                            <div class="alert alert-danger py-1 px-2 mb-2 small fw-bold text-center shadow-sm">
+                                @reminderMessage
+                            </div>
+                        }
+
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title fw-bold text-dark mb-0 text-truncate" style="max-width: 80%;" title="@item.Title">
+                                @if(item.IsCompleted) { <del>@item.Title</del> } else { @item.Title }
+                            </h5>
+                            
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary p-0" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                                    @if(!item.IsCompleted){
+                                    <li>
+                                        <form asp-action="MarkCompleted" asp-route-id="@item.Id" method="post">
+                                            <button type="submit" class="dropdown-item text-success fw-bold">
+                                                <i class="bi bi-check-lg me-2"></i> Completed
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    }
+                                    <li>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="dropdown-item">
+                                            <i class="bi bi-pencil me-2 text-warning"></i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="dropdown-item">
+                                            <i class="bi bi-eye me-2 text-info"></i> Details
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="dropdown-item text-danger">
+                                            <i class="bi bi-trash me-2"></i> Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="badge bg-light @textClass border border-light rounded-pill px-3 py-2">
+                                <i class="bi @icon me-1"></i> @item.Priority
+                            </span>
+                        </div>
+
+                        <div class="d-flex align-items-center text-muted small mt-auto">
+                            <i class="bi bi-calendar-event me-2"></i>
+                            <span>Due: <strong>@item.DueDate.ToString("dd/MM/yyyy HH:mm")</strong></span>
+                        </div>
+                        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="mt-3 pt-2 border-top">
+                                <small class="text-muted">
+                                    <i class="bi bi-person-fill"></i> User: @(item.Owner?.UserName ?? "Unknown")
+                                </small>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @*  *@
+    <div class="d-flex justify-content-center mt-4 gap-2">
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-filterPriority="@ViewData["CurrentPriority"]"
+           asp-route-showCompleted="@ViewData["ShowCompleted"]"
+           class="btn btn-outline-primary @prevDisabled">
+            <i class="bi bi-chevron-left"></i> Previous
+        </a>
+        
+        <span class="btn btn-light disabled text-dark border">
+            Page @Model.PageIndex of @Model.TotalPages
+        </span>
+
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-filterPriority="@ViewData["CurrentPriority"]"
+           asp-route-showCompleted="@ViewData["ShowCompleted"]"
+           class="btn btn-outline-primary @nextDisabled">
+            Next <i class="bi bi-chevron-right"></i>
+        </a>
+    </div>
+}

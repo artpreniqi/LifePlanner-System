@@ -1,0 +1,54 @@
+@model LifePlanner.Models.LifeGoal
+
+@{
+    ViewData["Title"] = "Create Goal";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="bi bi-trophy"></i> Set New Life Goal</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="GoalName" class="form-label fw-bold">Goal Name</label>
+                        <input asp-for="GoalName" class="form-control" placeholder="e.g., Buy a House, Learn C#" />
+                        <span asp-validation-for="GoalName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Details about your goal..."></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="TargetDate" class="form-label">Target Date</label>
+                            <input asp-for="TargetDate" class="form-control" type="date" />
+                            <span asp-validation-for="TargetDate" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="ProgressPercentage" class="form-label">Initial Progress (%)</label>
+                            <input asp-for="ProgressPercentage" class="form-control" type="number" min="0" max="100" value="0" />
+                            <span asp-validation-for="ProgressPercentage" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-warning btn-lg text-dark fw-bold">Save Goal</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

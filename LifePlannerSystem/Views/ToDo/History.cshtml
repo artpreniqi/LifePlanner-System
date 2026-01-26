@@ -1,0 +1,54 @@
+@model IEnumerable<LifePlanner.Models.ToDoItem>
+
+@{
+    ViewData["Title"] = "Task History";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-secondary"><i class="bi bi-archive-fill me-2"></i>Task History</h2>
+        <p class="text-muted">Review your completed achievements.</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left me-2"></i>Back to Active Tasks
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5 text-muted">
+        <i class="bi bi-inbox display-1 opacity-25"></i>
+        <p class="mt-3">No completed tasks yet.</p>
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm bg-light opacity-75"> 
+                    <div class="card-body border-start border-5 border-secondary rounded-3">
+                        
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title text-decoration-line-through text-muted">@item.Title</h5>
+                            <span class="badge bg-success"><i class="bi bi-check-all"></i> Done</span>
+                        </div>
+
+                        <p class="text-muted small mt-2">
+                            <i class="bi bi-calendar-check me-2"></i>
+                            Due: @item.DueDate.ToString("dd MMM yyyy, HH:mm")
+                        </p>
+                        
+                        <div class="mt-3">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Delete Forever
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

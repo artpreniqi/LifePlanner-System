@@ -1,0 +1,46 @@
+@model LifePlanner.Models.LifeGoal
+
+@{ ViewData["Title"] = "Update Goal"; }
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-warning">
+            <div class="card-header bg-white text-warning fw-bold">
+                <i class="bi bi-pencil-square"></i> Update Progress
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="OwnerId" /> <div class="mb-3">
+                        <label asp-for="GoalName" class="form-label">Goal Name</label>
+                        <input asp-for="GoalName" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ProgressPercentage" class="form-label">Current Progress: <span id="valBox">@Model.ProgressPercentage</span>%</label>
+                        <input asp-for="ProgressPercentage" type="range" class="form-range" min="0" max="100" id="progressRange" oninput="showVal(this.value)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TargetDate" class="form-label">Target Date</label>
+                        <input asp-for="TargetDate" class="form-control" type="date" />
+                    </div>
+
+                    <button type="submit" class="btn btn-warning w-100">Update Goal</button>
+                    <a asp-action="Index" class="btn btn-link w-100 text-center mt-2">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showVal(newVal){
+      document.getElementById("valBox").innerHTML = newVal;
+    }
+</script>
