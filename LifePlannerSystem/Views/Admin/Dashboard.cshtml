@@ -1,0 +1,248 @@
+@model IEnumerable<LifePlanner.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "System Overview";
+}
+
+<style>
+   
+    .page-title {
+        color: #212529; 
+        transition: color 0.3s ease;
+    }
+
+    .stat-card {
+        border: none;
+        border-radius: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: white; 
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .stat-primary { background: linear-gradient(135deg, #0d6efd, #0a58ca); }
+    .stat-success { background: linear-gradient(135deg, #198754, #146c43); }
+    .stat-info    { background: linear-gradient(135deg, #0dcaf0, #0aa2c0); color: #fff; }
+    .stat-warning { background: linear-gradient(135deg, #ffc107, #ffca2c); color: #000; }
+
+    
+    .table-card {
+        background-color: #ffffff; 
+        border-radius: 20px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .table-card-header {
+        background-color: #ffffff; 
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .search-input-group .input-group-text {
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-right: none;
+    }
+    .search-input-group .form-control {
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-left: none;
+        color: #333;
+    }
+
+    .custom-thead {
+        background-color: #f8f9fa; 
+    }
+
+    .user-icon-box {
+        background-color: #f8f9fa; 
+        color: #333;
+    }
+
+
+    body.dark-mode .page-title {
+        color: #ffffff !important; 
+    }
+
+    body.dark-mode .stat-card {
+        background: #1e2530 !important;
+        border: 1px solid #2a3241;
+        color: #e0e0e0 !important;
+    }
+    
+    body.dark-mode .stat-primary .stat-icon, body.dark-mode .stat-primary .stat-value { color: #0d6efd !important; }
+    body.dark-mode .stat-success .stat-icon, body.dark-mode .stat-success .stat-value { color: #198754 !important; }
+    body.dark-mode .stat-info .stat-icon,    body.dark-mode .stat-info .stat-value    { color: #0dcaf0 !important; }
+    body.dark-mode .stat-warning .stat-icon, body.dark-mode .stat-warning .stat-value { color: #ffc107 !important; }
+
+    body.dark-mode .table-card {
+        background-color: #151a23 !important; 
+        border-color: #2a3241 !important;
+    }
+    
+    body.dark-mode .table-card-header {
+        background-color: #151a23 !important; 
+        border-bottom-color: #2a3241 !important;
+        color: #ffffff !important;
+    }
+
+    body.dark-mode .search-input-group .input-group-text {
+        background-color: #1e2530 !important;
+        border-color: #444 !important;
+        color: #aaa !important;
+    }
+    body.dark-mode .search-input-group .form-control {
+        background-color: #1e2530 !important;
+        border-color: #444 !important;
+        color: #fff !important;
+    }
+
+    body.dark-mode .table {
+        color: #e0e0e0 !important;
+    }
+    body.dark-mode .custom-thead th {
+        background-color: #1e2530 !important; 
+        border-bottom-color: #444 !important;
+        color: #fff !important;
+    }
+    body.dark-mode .table tbody td {
+        border-bottom-color: #2a3241 !important;
+    }
+    
+    body.dark-mode .table-hover tbody tr:hover {
+        background-color: #2a3241 !important;
+        color: #fff !important;
+    }
+
+    body.dark-mode .user-icon-box {
+        background-color: #2a3241 !important;
+        color: #fff !important;
+    }
+</style>
+
+<div class="container-fluid py-4">
+    <h2 class="fw-bold mb-4 page-title"><i class="bi bi-speedometer2 me-2"></i>Admin Control Center</h2>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card stat-card stat-primary h-100 p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-people-fill fs-1 me-3 stat-icon opacity-75"></i>
+                    <div>
+                        <h6 class="text-uppercase small fw-bold mb-0 opacity-75">Total Users</h6>
+                        <h2 class="fw-bold mb-0 stat-value">@ViewBag.TotalUsers</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-success h-100 p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-list-check fs-1 me-3 stat-icon opacity-75"></i>
+                    <div>
+                        <h6 class="text-uppercase small fw-bold mb-0 opacity-75">System Tasks</h6>
+                        <h2 class="fw-bold mb-0 stat-value">@ViewBag.TotalTasks</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-info h-100 p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-trophy-fill fs-1 me-3 stat-icon opacity-75"></i>
+                    <div>
+                        <h6 class="text-uppercase small fw-bold mb-0 opacity-75">System Goals</h6>
+                        <h2 class="fw-bold mb-0 stat-value">@ViewBag.TotalGoals</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card stat-warning h-100 p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-journal-text fs-1 me-3 stat-icon opacity-75"></i>
+                    <div>
+                        <h6 class="text-uppercase small fw-bold mb-0 opacity-75">Total Notes</h6>
+                        <h2 class="fw-bold mb-0 stat-value">@ViewBag.TotalNotes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card table-card shadow-sm border-0 overflow-hidden">
+        
+        <div class="card-header table-card-header py-3 border-0 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <h5 class="fw-bold m-0"><i class="bi bi-person-lines-fill me-2 text-primary"></i>User Inspector</h5>
+            
+            <div class="input-group search-input-group" style="max-width: 300px;">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" id="userSearchInput" class="form-control" placeholder="Search users...">
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="usersTable">
+                    <thead class="custom-thead">
+                        <tr>
+                            <th class="ps-4 py-3">User</th>
+                            <th class="py-3">Email</th>
+                            <th class="text-center py-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-icon-box rounded-circle p-2 me-3">
+                                            <i class="bi bi-person fs-5"></i>
+                                        </div>
+                                        <strong>@user.UserName</strong>
+                                    </div>
+                                </td>
+                                <td>@user.Email</td>
+                                <td class="text-center">
+                                    <a asp-action="UserDetails" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                        <i class="bi bi-eye me-1"></i> Inspect
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="noResultsMessage" class="text-center py-4 text-muted" style="display: none;">
+                <i class="bi bi-search display-6 opacity-25"></i>
+                <p class="mt-2 mb-0">No users found.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('userSearchInput');
+        const rows = document.getElementById('tableBody').getElementsByTagName('tr');
+        const noResultsMsg = document.getElementById('noResultsMessage');
+
+        searchInput.addEventListener('keyup', function() {
+            const filter = searchInput.value.toLowerCase();
+            let hasVisibleRows = false;
+
+            for (let i = 0; i < rows.length; i++) {
+                const userText = rows[i].innerText.toLowerCase();
+                if (userText.includes(filter)) {
+                    rows[i].style.display = "";
+                    hasVisibleRows = true;
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+            noResultsMsg.style.display = hasVisibleRows ? "none" : "block";
+        });
+    });
+</script>

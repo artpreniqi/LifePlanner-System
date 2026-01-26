@@ -1,0 +1,234 @@
+@{
+    ViewData["Title"] = "User Details";
+    var user = ViewBag.TargetUser as LifePlanner.Models.ApplicationUser;
+    var tasks = ViewBag.Tasks as List<LifePlanner.Models.ToDoItem>;
+    var goals = ViewBag.Goals as List<LifePlanner.Models.LifeGoal>;
+    var notes = ViewBag.Notes as List<LifePlanner.Models.PersonalNote>;
+}
+
+<style>
+    /* 1. Button Click */
+    .nav-pills .nav-link {
+        background-color: #f8f9fa; 
+        color: #495057;          
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: #0d6efd !important; 
+        color: #ffffff !important;           
+    }
+
+    .nav-pills .nav-link.active .badge {
+        background-color: #ffffff !important; 
+        color: #0d6efd !important;        
+    }
+
+    /* 2. Card Details */
+    .detail-card {
+        background-color: #ffffff;
+        color: #333333;
+        border: 1px solid #e0e0e0;
+        border-radius: 15px;
+        transition: transform 0.2s;
+    }
+    .detail-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* DARK MODE ADJUSTMENTS */
+    body.dark-mode .nav-pills .nav-link {
+        background-color: #151a23;
+        color: #a0a0a0;
+    }
+    body.dark-mode .nav-pills .nav-link.active {
+        background-color: #38ef7d !important; 
+        color: #000000 !important;           
+    }
+    body.dark-mode .nav-pills .nav-link.active .badge {
+        background-color: #000000 !important;
+        color: #38ef7d !important;
+    }
+    body.dark-mode .detail-card {
+        background-color: #1e2530 !important;
+        color: #e0e0e0 !important;
+        border-color: #2a3241 !important;
+    }
+    body.dark-mode .list-group-item {
+        background-color: transparent !important;
+        color: #e0e0e0 !important;
+        border-color: #2a3241 !important;
+    }
+</style>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h6 class="text-muted text-uppercase mb-1">Inspecting User</h6>
+            <h2 class="fw-bold text-primary">
+                <i class="bi bi-person-circle me-2"></i>@user.UserName
+            </h2>
+            <p class="text-muted mb-0">@user.Email</p>
+        </div>
+        <a asp-action="Dashboard" class="btn btn-outline-secondary rounded-pill px-4 fw-bold">
+            <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+        </a>
+    </div>
+
+    <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-pill fw-bold px-4" id="pills-tasks-tab" data-bs-toggle="pill" data-bs-target="#pills-tasks" type="button" role="tab">
+                <i class="bi bi-list-task me-2"></i>Tasks 
+                <span class="badge ms-2">@tasks.Count</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill fw-bold px-4" id="pills-goals-tab" data-bs-toggle="pill" data-bs-target="#pills-goals" type="button" role="tab">
+                <i class="bi bi-trophy me-2"></i>Goals 
+                <span class="badge ms-2">@goals.Count</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill fw-bold px-4" id="pills-notes-tab" data-bs-toggle="pill" data-bs-target="#pills-notes" type="button" role="tab">
+                <i class="bi bi-journal-text me-2"></i>Notes 
+                <span class="badge ms-2">@notes.Count</span>
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+        
+        <div class="tab-pane fade show active" id="pills-tasks" role="tabpanel">
+            <div class="card detail-card shadow-sm border-0">
+                <div class="card-body p-0">
+                    @if (tasks.Count == 0) 
+                    { 
+                        <div class="text-center py-5 opacity-50">
+                            <i class="bi bi-inbox display-4"></i>
+                            <p class="mt-2">User has no tasks.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="list-group list-group-flush rounded-3">
+                            @foreach (var t in tasks)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-check-circle me-3 @(t.IsCompleted ? "text-success" : "text-muted")"></i>
+                                        <div>
+                                            <span class="fw-bold @(t.IsCompleted ? "text-decoration-line-through opacity-50" : "")">@t.Title</span>
+                                            <div class="small text-muted">Due: @t.DueDate.ToString("dd MMM yyyy")</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="badge rounded-pill @(t.Priority == "High" ? "bg-danger" : (t.Priority == "Medium" ? "bg-warning text-dark" : "bg-success"))">
+                                            @t.Priority
+                                        </span>
+                                        
+                                        <form asp-action="DeleteUserTask" method="post" onsubmit="return confirm('Are you sure? This cannot be undone.');">
+                                            <input type="hidden" name="id" value="@t.Id" />
+                                            <input type="hidden" name="returnUserId" value="@user.Id" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle border-0" title="Delete Task">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-goals" role="tabpanel">
+             <div class="row g-3">
+                 @if (goals.Count == 0) 
+                 { 
+                    <div class="text-center py-5 opacity-50 col-12">
+                        <i class="bi bi-trophy display-4"></i>
+                        <p class="mt-2">User has no goals.</p>
+                    </div>
+                 }
+                 @foreach (var g in goals)
+                 {
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card detail-card h-100 shadow-sm position-relative">
+                             
+                             <form asp-action="DeleteUserGoal" method="post" class="position-absolute top-0 end-0 m-2" style="z-index: 5;" onsubmit="return confirm('Delete this goal?');">
+                                <input type="hidden" name="id" value="@g.Id" />
+                                <input type="hidden" name="returnUserId" value="@user.Id" />
+                                <button type="submit" class="btn btn-sm btn-light text-danger rounded-circle shadow-sm" title="Delete Goal">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                             </form>
+
+                             <div class="card-body">
+                                 <div class="d-flex justify-content-between mb-2">
+                                     <span class="badge bg-info text-dark rounded-pill">@g.Category</span>
+                                     <small class="text-muted">Target: @g.TargetDate.ToString("dd/MM/yy")</small>
+                                 </div>
+                                 <h5 class="card-title fw-bold pe-4">@g.GoalName</h5>
+                                 <p class="card-text small text-muted text-truncate">@g.Description</p>
+                                 
+                                 <div class="mt-3">
+                                     <div class="d-flex justify-content-between small fw-bold mb-1">
+                                         <span>Progress</span>
+                                         <span class="text-primary">@g.ProgressPercentage%</span>
+                                     </div>
+                                     <div class="progress" style="height: 6px;">
+                                         <div class="progress-bar bg-primary" style="width: @g.ProgressPercentage%"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 }
+             </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-notes" role="tabpanel">
+            <div class="row g-3">
+                @if (notes.Count == 0) 
+                { 
+                    <div class="text-center py-5 opacity-50 col-12">
+                        <i class="bi bi-journal-x display-4"></i>
+                        <p class="mt-2">User has no notes.</p>
+                    </div>
+                }
+                @foreach (var n in notes)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card detail-card h-100 shadow-sm position-relative">
+                            
+                            <form asp-action="DeleteUserNote" method="post" class="position-absolute top-0 end-0 m-2" style="z-index: 5;" onsubmit="return confirm('Delete this note?');">
+                                <input type="hidden" name="id" value="@n.Id" />
+                                <input type="hidden" name="returnUserId" value="@user.Id" />
+                                <button type="submit" class="btn btn-sm btn-light text-danger rounded-circle shadow-sm" title="Delete Note">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2 pe-4">@n.Title</h5>
+                                <p class="card-text small text-muted" style="min-height: 40px;">
+                                    @(n.Content != null && n.Content.Length > 100 ? n.Content.Substring(0, 100) + "..." : n.Content)
+                                </p>
+                                <div class="border-top pt-2 mt-2 text-end">
+                                    <small class="text-secondary fst-italic" style="font-size: 0.75rem;">
+                                        <i class="bi bi-clock me-1"></i> @n.CreatedAt.ToString("dd MMM yyyy, HH:mm")
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

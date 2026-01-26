@@ -1,0 +1,174 @@
+@model LifePlanner.ViewModels.NotesViewModel
+
+@{
+    ViewData["Title"] = "My Notes";
+}
+
+<style>
+    /* Layout that fills the screen */
+    .notes-container {
+        height: calc(100vh - 140px); 
+        min-height: 500px;
+    }
+
+    /* SIDEBAR */
+    .notes-sidebar {
+        background-color: #f8f9fa;
+        border-right: 1px solid #dee2e6;
+        overflow-y: auto;
+        height: 100%;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+    .note-item {
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+        background: transparent;
+        transition: all 0.2s;
+        cursor: pointer;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 5px;
+    }
+
+    .note-item:hover {
+        background-color: #e2e6ea;
+    }
+
+    .note-item.active {
+        background-color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border-left: 5px solid #11998e; 
+    }
+
+    /* Editor */
+    .notes-editor {
+        background-color: #ffffff;
+        height: 100%;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        position: relative;
+    }
+
+    .editor-textarea {
+        border: none;
+        resize: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+    
+    .editor-title {
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+        outline: none;
+        font-weight: bold;
+        background: transparent;
+        color: #222;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .editor-title:focus { border-bottom: 1px solid #11998e; }
+
+    /* DARK MODE */
+    body.dark-mode .notes-sidebar { background-color: #151a23; border-color: #2a3241; }
+    body.dark-mode .notes-editor { background-color: #1e2530; }
+    body.dark-mode .note-item { color: #e0e0e0; border-bottom-color: #2a3241; }
+    body.dark-mode .note-item:hover { background-color: #2a3241; }
+    body.dark-mode .note-item.active { background-color: #2a3241; border-left-color: #38ef7d; }
+    body.dark-mode .editor-textarea, body.dark-mode .editor-title { color: #e0e0e0; }
+    body.dark-mode .text-muted { color: #94a3b8 !important; }
+</style>
+
+<div class="container-fluid">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="row g-0 notes-container">
+            
+            <div class="col-md-4 col-lg-3 notes-sidebar p-0 d-flex flex-column">
+                
+                <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-white sticky-top" style="z-index: 10;">
+                    <h5 class="fw-bold m-0 text-dark"><i class="bi bi-journal-text me-2 text-primary"></i>Notes</h5>
+                    <a asp-action="Index" asp-route-id="" class="btn btn-primary btn-sm rounded-pill fw-bold shadow-sm">
+                        <i class="bi bi-plus-lg"></i> New
+                    </a>
+                </div>
+
+                <div class="flex-grow-1 overflow-auto">
+                    @if (!Model.AllNotes.Any())
+                    {
+                        <div class="text-center py-5 text-muted">
+                            <i class="bi bi-pencil-square display-4 opacity-25"></i>
+                            <p class="small mt-2">No notes yet.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var note in Model.AllNotes)
+                        {
+                            var isActive = Model.CurrentNote != null && Model.CurrentNote.Id == note.Id;
+                            
+                            <a asp-action="Index" asp-route-id="@note.Id" class="d-block text-decoration-none text-dark">
+                                <div class="note-item @(isActive ? "active" : "") p-3">
+                                    <h6 class="fw-bold mb-1 text-truncate">@(string.IsNullOrEmpty(note.Title) ? "Untitled" : note.Title)</h6>
+                                    <p class="small text-muted mb-1 text-truncate" style="max-height: 40px; overflow: hidden;">
+                                        @(string.IsNullOrEmpty(note.Content) ? "No content" : note.Content)
+                                    </p>
+                                    <small class="text-secondary" style="font-size: 0.75rem;">
+                                        @note.CreatedAt.ToString("dd MMM") </small>
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-9 notes-editor p-4 d-flex flex-column position-relative">
+                
+                <form asp-action="Save" method="post" class="h-100 d-flex flex-column">
+                    
+                    <input type="hidden" name="Id" value="@Model.CurrentNote.Id" />
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted small">
+                            @if(Model.IsEditMode) { <span><i class="bi bi-clock me-1"></i> Created: @Model.CurrentNote.CreatedAt.ToString("dd MMM yyyy, HH:mm")</span> }
+                            else { <span><i class="bi bi-stars me-1"></i> New Note</span> }
+                        </span>
+                        
+                        <div>
+                            @if (Model.IsEditMode)
+                            {
+                                <button type="submit" formaction="@Url.Action("Delete", new { id = Model.CurrentNote.Id })" class="btn btn-light text-danger btn-sm me-2 rounded-pill hover-danger" title="Delete Note">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            }
+                            <button type="submit" class="btn btn-success btn-sm rounded-pill px-4 fw-bold shadow-sm">
+                                <i class="bi bi-check-lg me-1"></i> Save Note
+                            </button>
+                        </div>
+                    </div>
+
+                    <input type="text" name="Title" class="editor-title fs-3 mb-3 pb-2 w-100" 
+                           placeholder="Title goes here..." 
+                           value="@Model.CurrentNote.Title" required autocomplete="off"/>
+
+                    <div class="flex-grow-1">
+                        <textarea name="Content" class="editor-textarea" 
+                                  placeholder="Start typing your thoughts...">@Model.CurrentNote.Content</textarea>
+                    </div>
+
+                </form>
+                
+                @if (!Model.IsEditMode && string.IsNullOrEmpty(Model.CurrentNote.Title))
+                {
+                    <i class="bi bi-pen position-absolute text-muted opacity-10" 
+                       style="bottom: 30px; right: 40px; font-size: 10rem; pointer-events: none;"></i>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

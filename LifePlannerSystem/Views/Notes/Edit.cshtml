@@ -1,0 +1,54 @@
+@model LifePlanner.Models.PersonalNote
+
+@{
+    ViewData["Title"] = "Edit Note";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow border-info">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Edit Note</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="OwnerId" />
+                    <input type="hidden" asp-for="CreatedAt" />
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Category" class="form-label">Category</label>
+                        <select asp-for="Category" class="form-select">
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="Ideas">Ideas</option>
+                            <option value="Study">Study</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Content" class="form-label">Content</label>
+                        <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-info text-white px-4">Update Note</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
