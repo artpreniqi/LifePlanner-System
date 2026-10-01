@@ -1,48 +1,39 @@
 using Microsoft.AspNetCore.Identity.UI.Services;
-using System.Net;
-using System.Net.Mail;
+using System.Net.Http.Json;
 
 namespace LifePlanner.Services
 {
     public class EmailSender : IEmailSender
     {
         private readonly IConfiguration _configuration;
+        private readonly HttpClient _httpClient;
 
-        public EmailSender(IConfiguration configuration)
+        public EmailSender(IConfiguration configuration, HttpClient httpClient)
         {
             _configuration = configuration;
+            _httpClient = httpClient;
         }
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var mailServer = _configuration["EmailSettings:MailServer"]
-                ?? throw new InvalidOperationException("EmailSettings:MailServer is not configured.");
-            var mailPort = _configuration.GetValue("EmailSettings:MailPort", 587);
+            var apiKey = _configuration["EmailSettings:ApiKey"]
+                ?? throw new InvalidOperationException("EmailSettings:ApiKey is not configured.");
             var senderEmail = _configuration["EmailSettings:SenderEmail"]
                 ?? throw new InvalidOperationException("EmailSettings:SenderEmail is not configured.");
             var senderName = _configuration["EmailSettings:SenderName"] ?? "LifePlanner System";
-            var password = _configuration["EmailSettings:Password"]
-                ?? throw new InvalidOperationException("EmailSettings:Password is not configured.");
 
-            using var client = new SmtpClient(mailServer, mailPort)
+            using var request = new HttpRequestMessage(HttpMethod.Post, "https://api.brevo.com/v3/smtp/email");
+            request.Headers.Add("api-key", apiKey);
+            request.Content = JsonContent.Create(new
             {
-                Credentials = new NetworkCredential(senderEmail, password),
-                EnableSsl = true
-            };
+                sender = new { email = senderEmail, name = senderName },
+                to = new[] { new { email } },
+                subject,
+                htmlContent = GetBeautifulEmailTemplate(subject, htmlMessage)
+            });
 
-            string finalHtmlContent = GetBeautifulEmailTemplate(subject, htmlMessage);
-
-            using var mailMessage = new MailMessage
-            {
-                From = new MailAddress(senderEmail, senderName),
-                Subject = subject,
-                Body = finalHtmlContent, 
-                IsBodyHtml = true
-            };
-
-            mailMessage.To.Add(email);
-
-            await client.SendMailAsync(mailMessage);
+            using var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
         }
 
         private string GetBeautifulEmailTemplate(string title, string messageBody)

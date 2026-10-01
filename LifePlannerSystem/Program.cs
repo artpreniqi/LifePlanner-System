@@ -31,7 +31,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
 .AddDefaultUI() 
 .AddDefaultTokenProviders(); 
 
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddHttpClient<IEmailSender, EmailSender>();
 
 
 // 3. System Configuration (MVC, Session, User Access)
