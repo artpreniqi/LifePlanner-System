@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9W4MUjqThRM=",
+  "dgSpecHash": "MNX4Lu2Je3c=",
   "success": true,
   "projectFilePath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlanner.csproj",
   "expectedPackageFiles": [
@@ -115,5 +115,30 @@
     "C:\\Users\\ArtPr\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.4\\system.security.cryptography.pkcs.6.0.4.nupkg.sha512",
     "C:\\Users\\ArtPr\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.6\\system.security.cryptography.protecteddata.9.0.6.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1901",
+      "level": "Warning",
+      "message": "Package 'NuGet.Packaging' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
+      "projectPath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlanner.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlanner.csproj",
+      "libraryId": "NuGet.Packaging",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1901",
+      "level": "Warning",
+      "message": "Package 'NuGet.Protocol' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
+      "projectPath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlanner.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\ArtPr\\OneDrive\\Documents\\UBT\\Shkenca Kompjuterike dhe Inxhinieri\\Semestri V\\Programimi në anën e ServeritUeb Programimi\\LifePlanner System\\LifePlannerSystem\\LifePlanner.csproj",
+      "libraryId": "NuGet.Protocol",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

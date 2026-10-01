@@ -78,12 +78,56 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Admin/CreateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Admin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Admin/UserDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/LifeGoals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlmZUdvYWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/LifeGoals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlmZUdvYWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/LifeGoals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlmZUdvYWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Notes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Notes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Notes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Shared/Error.cshtml]
@@ -100,6 +144,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/ToDo/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/ToDo/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/ToDo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/ToDo/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb1xIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/ToDo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9Eb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ArtPr/OneDrive/Documents/UBT/Shkenca Kompjuterike dhe Inxhinieri/Semestri V/Programimi në anën e ServeritUeb Programimi/LifePlanner System/LifePlannerSystem/Views/_ViewImports.cshtml]

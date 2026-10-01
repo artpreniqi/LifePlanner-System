@@ -13,15 +13,18 @@ namespace LifePlanner.Services
             _configuration = configuration;
         }
 
-        public Task SendEmailAsync(string email, string subject, string htmlMessage)
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var mailServer = _configuration["EmailSettings:MailServer"];
-            var mailPort = int.Parse(_configuration["EmailSettings:MailPort"]);
-            var senderEmail = _configuration["EmailSettings:SenderEmail"];
-            var senderName = _configuration["EmailSettings:SenderName"];
-            var password = _configuration["EmailSettings:Password"];
+            var mailServer = _configuration["EmailSettings:MailServer"]
+                ?? throw new InvalidOperationException("EmailSettings:MailServer is not configured.");
+            var mailPort = _configuration.GetValue("EmailSettings:MailPort", 587);
+            var senderEmail = _configuration["EmailSettings:SenderEmail"]
+                ?? throw new InvalidOperationException("EmailSettings:SenderEmail is not configured.");
+            var senderName = _configuration["EmailSettings:SenderName"] ?? "LifePlanner System";
+            var password = _configuration["EmailSettings:Password"]
+                ?? throw new InvalidOperationException("EmailSettings:Password is not configured.");
 
-            var client = new SmtpClient(mailServer, mailPort)
+            using var client = new SmtpClient(mailServer, mailPort)
             {
                 Credentials = new NetworkCredential(senderEmail, password),
                 EnableSsl = true
@@ -29,7 +32,7 @@ namespace LifePlanner.Services
 
             string finalHtmlContent = GetBeautifulEmailTemplate(subject, htmlMessage);
 
-            var mailMessage = new MailMessage
+            using var mailMessage = new MailMessage
             {
                 From = new MailAddress(senderEmail, senderName),
                 Subject = subject,
@@ -39,7 +42,7 @@ namespace LifePlanner.Services
 
             mailMessage.To.Add(email);
 
-            return client.SendMailAsync(mailMessage);
+            await client.SendMailAsync(mailMessage);
         }
 
         private string GetBeautifulEmailTemplate(string title, string messageBody)

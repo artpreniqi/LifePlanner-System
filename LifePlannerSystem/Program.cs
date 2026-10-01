@@ -12,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. Database Configuration PostgreSQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+    throw new InvalidOperationException("ConnectionStrings:DefaultConnection is not configured.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -39,6 +42,7 @@ builder.Services.AddControllersWithViews()
     });
 
 builder.Services.AddRazorPages(); // Login/Register pages Activation
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
@@ -48,29 +52,37 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    try 
-    {
-        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-        var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-        
-        string[] roleNames = { "Admin", "User" };
-        foreach (var roleName in roleNames)
-        {
-            if (!await roleManager.RoleExistsAsync(roleName))
-                await roleManager.CreateAsync(new IdentityRole(roleName));
-        }
+    var dbContext = services.GetRequiredService<ApplicationDbContext>();
+    await dbContext.Database.MigrateAsync();
 
-        var adminEmail = "admin@lifeplanner.com";
-        if (await userManager.FindByEmailAsync(adminEmail) == null)
-        {
-            var admin = new ApplicationUser { UserName = adminEmail, Email = adminEmail, FullName = "System Administrator", EmailConfirmed = true };
-            await userManager.CreateAsync(admin, "Admin123!");
-            await userManager.AddToRoleAsync(admin, "Admin");
-        }
-    }
-    catch(Exception ex)
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+    string[] roleNames = { "Admin", "User" };
+    foreach (var roleName in roleNames)
     {
-        Console.WriteLine("Error during seeding: " + ex.Message);
+        if (!await roleManager.RoleExistsAsync(roleName))
+            await roleManager.CreateAsync(new IdentityRole(roleName));
+    }
+
+    var adminEmail = builder.Configuration["InitialAdmin:Email"];
+    var adminPassword = builder.Configuration["InitialAdmin:Password"];
+    if (!string.IsNullOrWhiteSpace(adminEmail) && !string.IsNullOrWhiteSpace(adminPassword)
+        && await userManager.FindByEmailAsync(adminEmail) == null)
+    {
+        var admin = new ApplicationUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            FullName = "System Administrator",
+            EmailConfirmed = true
+        };
+
+        var createResult = await userManager.CreateAsync(admin, adminPassword);
+        if (!createResult.Succeeded)
+            throw new InvalidOperationException(string.Join("; ", createResult.Errors.Select(error => error.Description)));
+
+        await userManager.AddToRoleAsync(admin, "Admin");
     }
 }
 

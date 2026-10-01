@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LifePlanner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5555439d95311aa6ff4a1bc6cb78f7fc1d577128")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08d94aa191fb30a81aa978f037115c9940c81732")]
 [assembly: System.Reflection.AssemblyProductAttribute("LifePlanner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LifePlanner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
